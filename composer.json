@@ -1,0 +1,9 @@
+{
+    "name": "nailfor/couchbase",
+    "type": "library",
+    "autoload": {
+	"psr-4": {
+	    "nailfor\\Couchbase\\": "src/"
+	}
+    }
+}
