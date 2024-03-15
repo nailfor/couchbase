@@ -76,5 +76,5 @@ class PDOConnector extends Connector implements ConnectorInterface
     protected function createPdoConnection($dsn, $username, $password, $options)
     {
         return new PDO($dsn, $username, $password, $options);
-    }    
+    }
 }

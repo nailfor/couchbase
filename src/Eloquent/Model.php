@@ -3,6 +3,7 @@
 namespace nailfor\Couchbase\Eloquent;
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
+use Illuminate\Support\Str;
 use nailfor\Couchbase\Query\QueryBuilder;
 
 /**
@@ -29,5 +30,17 @@ class Model extends BaseModel
     protected function newRelatedInstance($class)
     {
         return new $class;
-    }    
+    }
+
+    public function newFromBuilder($attributes = [], $connection = null)
+    {
+        $key = Str::of($this->table)
+            ->explode('.')
+            ->last()
+        ;
+        $key = Str::replace('`', '', $key);
+        $data = $attributes[$key] ?? $attributes;
+
+        return parent::newFromBuilder($data, $connection);
+    }
 }

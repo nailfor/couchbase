@@ -49,7 +49,7 @@ class PDO
         $sql = $this->getSql();
 
         $queryOptions = new QueryOptions();
-        $queryOptions->namedParameters([]);        
+        $queryOptions->namedParameters([]);
         $result = $this->client->query($sql, $queryOptions);
 
         return $result->rows();
@@ -59,7 +59,6 @@ class PDO
     {
         $wrapped_str = str_replace('?', "'?'", $this->query);
 
-        return \Str::replaceArray('?', $this->bindings, $wrapped_str);        
+        return \Str::replaceArray('?', $this->bindings, $wrapped_str);
     }
-
 }
